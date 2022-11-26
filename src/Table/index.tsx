@@ -52,27 +52,28 @@ export default function Table() {
               {
                 load ?
                    <tr className='emptyTable'>
-                    <td style={{background:"",width:""}}></td>
-                    <td style={{background:"",width:""}}>Vazio</td>
-                    <td style={{background:"",width:""}}></td>
+                    <td ></td>
+                    <td >Vazio</td>
+                    <td ></td>
                     <td></td>
                     <td></td>
                    </tr>
                 :
-                Transactions?.map((elem,key)=>{
-                  return  (
-                    <tbody key={key} className=''>
-                    <tr >
-                      <td style={{background:"",width:""}} scope="row">{key}</td>
-                      <td>{elem.obj.value.toFixed(2)}</td>
-                      <td>{elem.obj.debitedAccount?.id === idUserLogged ? "Você": elem.obj.debitedAccount?.user.username}</td>
-                      <td>{elem.obj.debitedAccount?.id !== idUserLogged ? "Você": elem.obj.creditedAccount?.user.username}</td>
-                      <td>{handleDate(elem.obj.createdAt)}</td>
-                    </tr>
-                  </tbody>
-      
-                  )
-                })
+  
+                <tbody className=''>
+                  {Transactions?.map((elem,key)=>{
+                      return  (
+                        <tr id={key.toString()} className={key.toString()}>
+                          <td  scope="row">{key}</td>
+                          <td>{elem.obj.value.toFixed(2)}</td>
+                          <td>{elem.obj.debitedAccount?.id === idUserLogged ? "Você": elem.obj.debitedAccount?.user.username}</td>
+                          <td>{elem.obj.debitedAccount?.id !== idUserLogged ? "Você": elem.obj.creditedAccount?.user.username}</td>
+                          <td>{handleDate(elem.obj.createdAt)}</td>
+                        </tr>
+                      )
+                    }
+                  )}
+                </tbody>
               }
             </table>
           </div>  
