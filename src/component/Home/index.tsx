@@ -5,7 +5,6 @@ import Payment from '../../Payment'
 import Table from '../../Table'
 import AppBar from './AppBar'
 import './Home.css'
-
 export default function Home() {
 
   return <div>

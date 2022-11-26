@@ -1,7 +1,8 @@
 .cadastroContainer{
     display: grid;
     grid-template-columns: 3fr 2fr;
-    
+    height: 100vh;    
+    box-sizing: border-box;
 }
 .cadastroBody{
     display: flex;
@@ -20,7 +21,6 @@
     background-position: center;
     background-size: cover;
     color: white;
-    height: 100vh;
     padding: 7%;
 }
 .cadastroTitle{
