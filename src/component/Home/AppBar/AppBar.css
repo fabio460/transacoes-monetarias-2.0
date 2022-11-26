@@ -1,0 +1,10 @@
+.appBarIMenuRight{
+    display: flex;
+    justify-content: space-between;
+    min-width: 250px;
+    align-items: center;
+}
+.appBarMenuRightMoney{
+    color: red;
+
+}

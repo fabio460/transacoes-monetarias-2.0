@@ -1,0 +1,52 @@
+.cadastroContainer{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    
+}
+.cadastroBody{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+.cadastroBodyTitle{
+    text-align: center;
+    color: #42a5f5;
+}
+.cadastroRight{
+    padding: 5%;
+}
+.cadastroLeft{
+    background-image: url('../../../public/backgrounts/background-money.jpg');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    height: 100vh;
+    padding: 7%;
+}
+.cadastroTitle{
+    color: #cfe6f9;
+}
+.cadastroText{
+    color: #cfe6f9;
+    min-height: 500px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+.cadastroTextItem{
+    margin-top: auto;
+    font-size: 18px;
+    max-width: 500px;
+}
+
+@media (max-width:600px) {
+    .cadastroLeft{
+      display: none;
+    }
+    .cadastroContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+        
+    }
+}

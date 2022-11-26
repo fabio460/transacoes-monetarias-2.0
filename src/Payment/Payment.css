@@ -1,0 +1,13 @@
+
+.paymentSelectBody{
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+@media (max-width:600px) {
+    .paymentSelectBody{
+        padding: 3%;
+    }
+}

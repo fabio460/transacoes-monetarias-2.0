@@ -1,0 +1,13 @@
+.homeContainer{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    padding: 2%;
+}
+
+@media (max-width:600px) {
+    .homeContainer{
+       
+        grid-template-columns: 1fr;
+        padding: 2%;
+    }
+}
