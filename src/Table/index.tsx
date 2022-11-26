@@ -18,12 +18,15 @@ export default function Table() {
     let dia = parseInt(dateSelected.toString().split(' ')[2])
     let ano = parseInt(dateSelected.toString().split(' ')[3])
     let mes = handleMonth(dateSelected.toString().split(' ')[1])
-    setload(true)
+    
     const transactions = await TransactionsRequest(Selected,dia,mes,ano)
-    setload(false)
+    if (transactions.length === 0) {
+      setload(true)
+    }else{
+      setload(false)
+    }
     setTransactions(transactions?.reverse())
   }
-
   useEffect(()=>{
     getUsersInformations()
   },[Selected,updateLayout,dateSelected])
@@ -40,31 +43,34 @@ export default function Table() {
               <thead>
                   <tr>
                       <th scope="col">Transações</th>
-                      <th scope="col">Valor</th>
+                      <th scope="col">Valor da transação</th>
                       <th scope="col"> <span id='th-2'>Enviado por </span></th>
                       <th  scope="col" ><span id='th-2'>Recebido por </span> </th>
                       <th scope="col">data</th>
                   </tr>
               </thead>
               {
+                load ?
+                   <tr className='emptyTable'>
+                    <td style={{background:"",width:""}}></td>
+                    <td style={{background:"",width:""}}>Vazio</td>
+                    <td style={{background:"",width:""}}></td>
+                    <td></td>
+                    <td></td>
+                   </tr>
+                :
                 Transactions?.map((elem,key)=>{
                   return  (
-                    load ?
                     <tbody key={key} className=''>
-                      <tr >
-                        <th scope="row">{key}</th>
-                        <td>{elem.obj.value.toFixed(2)}</td>
-                        <td>{elem.obj.debitedAccount?.id === idUserLogged ? "Você": elem.obj.debitedAccount?.user.username}</td>
-                        <td>{elem.obj.debitedAccount?.id !== idUserLogged ? "Você": elem.obj.creditedAccount?.user.username}</td>
-                        <td>{handleDate(elem.obj.createdAt)}</td>
-                      </tr>
-                    </tbody>
-                    :
-                    <tbody className=''>
                     <tr >
-                      <td>vazio</td>
+                      <td style={{background:"",width:""}} scope="row">{key}</td>
+                      <td>{elem.obj.value.toFixed(2)}</td>
+                      <td>{elem.obj.debitedAccount?.id === idUserLogged ? "Você": elem.obj.debitedAccount?.user.username}</td>
+                      <td>{elem.obj.debitedAccount?.id !== idUserLogged ? "Você": elem.obj.creditedAccount?.user.username}</td>
+                      <td>{handleDate(elem.obj.createdAt)}</td>
                     </tr>
-                    </tbody>
+                  </tbody>
+      
                   )
                 })
               }
