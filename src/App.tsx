@@ -1,5 +1,5 @@
 
-import Login from './component/Login/Login';
+import Login from './component/Login';
 import {
   Route,
   Routes,

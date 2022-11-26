@@ -1,4 +1,4 @@
-import { Button, FormControl, Input, InputLabel } from '@mui/material'
+import { Button, FormControl, Input, InputLabel,CircularProgress } from '@mui/material'
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CreateUser } from '../../Api'
@@ -10,9 +10,11 @@ export default function Cadastro() {
   const navigate = useNavigate()
 
   const createUser = async()=>{
+    setloadding(true)
      const usecreated = await CreateUser(username,password)
+     setloadding(false)
      alert(usecreated)
-     navigate('/')
+     //navigate('/login')
   }
   return (
     <div className='cadastroContainer'>
@@ -43,7 +45,14 @@ export default function Cadastro() {
                    onChange={e=>setpassword(e.target.value)}value={password}
                 />
           </FormControl>
-          <Button onClick={createUser} variant='contained' sx={{bgcolor:'#42a5f5'}}>Cadastrar</Button>
+          {
+              loadding ?
+              <Button disabled variant='contained' sx={{color:'white',bgcolor:'',marginTop:"20px"}}  color='error'>
+                <CircularProgress sx={{height:'10px',width:"10px"}} size='25px' color='error'/>
+              </Button>
+              :    
+              <Button onClick={createUser} variant='contained' sx={{bgcolor:'#42a5f5'}}>Cadastrar</Button> 
+          }
           <Button variant='outlined' onClick={()=>navigate('/')} sx={{color:'#42a5f5',marginTop:"20px"}}>Voltar </Button>
         </div>
       </div>

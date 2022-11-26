@@ -68,9 +68,11 @@ export default function PaymentBtnConfirm({NameSelected,ValueSelected,setValueSe
         <DialogActions>
           { 
             loadingButtonConfirm?
-            <Button> <CircularProgress sx={{height:'10px',width:"10px"}} size='25px'/></Button>:
+            <Button  color='error' sx={{width:"100px"}}><CircularProgress color='error' sx={{height:'5px',width:"5px"}} size='25px'/></Button>
+            :
             <Button color='error' onClick={Depositar}>Confirmar</Button>
           }
+         
           <Button onClick={handleClose} autoFocus>
             Cancelar
           </Button>
