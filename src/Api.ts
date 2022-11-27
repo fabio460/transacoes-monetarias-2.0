@@ -1,8 +1,8 @@
 
 import { getUserLocalStorage } from "./uteis"
 
- const url2 = 'http://localhost:4000/'
-const url= 'https://api-transacoes-monetarias.vercel.app/'
+ const url = 'http://localhost:4000/'
+const url2= 'https://api-transacoes-monetarias.vercel.app/'
 
 export async function LoginRequest(username:string,password:string) {
     const res = await fetch(url+'login',{
