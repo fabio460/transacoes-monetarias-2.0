@@ -108,4 +108,3 @@ export default function PaymentSelectUser({setNameSelected}:any) {
   );
 }
 
-// Top films as rated by IMDb users. http://www.imdb.com/chart/top

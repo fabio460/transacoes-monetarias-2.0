@@ -1,13 +1,16 @@
-import { Button, CircularProgress, FormControl, Input, InputLabel, Typography } from '@mui/material'
+import { Button, CircularProgress, FormControl, Input, InputLabel, Typography,IconButton } from '@mui/material'
 import React, { createContext, useContext, useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {LoginRequest} from '../../Api'
 import { setUserLocalStorage } from '../../uteis'
+import InputAdornment from '@mui/material/InputAdornment';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 export default function Login() {
     const [username, setusername] = useState('')  
     const [password, setpassword] = useState('')
     const [loadding, setloadding] = useState(false)
+    const [showPassword, setshowPassword] = useState(false) 
     const navigate = useNavigate()
 
     const logar =async ()=>{
@@ -21,6 +24,8 @@ export default function Login() {
        }
        setloadding(false)
     }
+
+   
   return (
     <div>
         <div className='cadastroContainer'>
@@ -46,9 +51,21 @@ export default function Login() {
               <FormControl variant="standard" sx={{margin:"20px 0px"}}>
                 <InputLabel htmlFor="component-simple">Senha</InputLabel>
                 <Input id="component-simple"  
-                  type='password'
+                  type={showPassword?'text':'password'}
                   onChange={e=>setpassword(e.target.value)}value={password}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={()=> setshowPassword(!showPassword)}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
+  
+               
               </FormControl>
               <Typography>
                 Não é cadastrado? <Link to={'/cadastro'}>Clique aqui  </Link>

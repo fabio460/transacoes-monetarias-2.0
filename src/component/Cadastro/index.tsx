@@ -2,11 +2,15 @@ import { Button, FormControl, Input, InputLabel,CircularProgress } from '@mui/ma
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CreateUser } from '../../Api'
+import { Visibility, VisibilityOff} from '@mui/icons-material';
 import './Cadastro.css'
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
 export default function Cadastro() {
   const [username, setusername] = useState('')  
   const [password, setpassword] = useState('')
   const [loadding, setloadding] = useState(false)
+  const [showPassword, setshowPassword] = useState(false) 
   const navigate = useNavigate()
 
   const createUser = async()=>{
@@ -14,7 +18,9 @@ export default function Cadastro() {
      const usecreated = await CreateUser(username,password)
      setloadding(false)
      alert(usecreated)
-     //navigate('/login')
+     if(usecreated === `Usuário ${username} cadastrado com sucesso!`){
+        navigate('/login')
+     }
   }
   return (
     <div className='cadastroContainer'>
@@ -41,8 +47,18 @@ export default function Cadastro() {
           <FormControl variant="standard" sx={{margin:"20px 0px"}}>
             <InputLabel htmlFor="component-simple">Senha</InputLabel>
             <Input id="component-simple" 
-                   type='password' 
+                   type={showPassword?'text':'password'}
                    onChange={e=>setpassword(e.target.value)}value={password}
+                   endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={()=> setshowPassword(!showPassword)}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
           </FormControl>
           {
