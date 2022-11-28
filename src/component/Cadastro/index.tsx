@@ -6,7 +6,10 @@ import { Visibility, VisibilityOff} from '@mui/icons-material';
 import './Cadastro.css'
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
+
 export default function Cadastro() {
+  const [inputInvalided, setInputInvalided] = useState(false)
+  const [msgInvalidInput, setmsgInvalidInput] = useState('')
   const [username, setusername] = useState('')  
   const [password, setpassword] = useState('')
   const [loadding, setloadding] = useState(false)
@@ -17,9 +20,11 @@ export default function Cadastro() {
     setloadding(true)
      const usecreated = await CreateUser(username,password)
      setloadding(false)
-     alert(usecreated)
      if(usecreated === `Usuário ${username} cadastrado com sucesso!`){
         navigate('/login')
+     }else{
+      setmsgInvalidInput(usecreated)
+      setInputInvalided(true)
      }
   }
   return (
@@ -42,11 +47,13 @@ export default function Cadastro() {
             <InputLabel htmlFor="component-simple">Nome</InputLabel>
             <Input id="component-simple" 
                     onChange={(e:any)=>setusername(e.target.value)}value={username}
+                    error={inputInvalided}
             />
           </FormControl>
           <FormControl variant="standard" sx={{margin:"20px 0px"}}>
             <InputLabel htmlFor="component-simple">Senha</InputLabel>
             <Input id="component-simple" 
+                   error={inputInvalided}
                    type={showPassword?'text':'password'}
                    onChange={e=>setpassword(e.target.value)}value={password}
                    endAdornment={
@@ -55,12 +62,16 @@ export default function Cadastro() {
                         aria-label="toggle password visibility"
                         onClick={()=> setshowPassword(!showPassword)}
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword ?
+                          <VisibilityOff color={inputInvalided ? 'error' :'inherit'} />
+                          : 
+                          <Visibility color={inputInvalided ? 'error' :'inherit'} />}
                       </IconButton>
                     </InputAdornment>
                   }
                 />
           </FormControl>
+          <div className='msgErro'>{msgInvalidInput}</div>
           {
               loadding ?
               <Button disabled variant='contained' sx={{color:'white',bgcolor:'',marginTop:"20px"}}  color='error'>
