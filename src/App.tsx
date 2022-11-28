@@ -6,7 +6,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import Home from './component/Home';
-import { PrivateRoute } from './component/PrivateRoute';
+import { PrivateRoute } from './component/PrivateRoutes/PrivateRoute';
 import Cadastro from './component/Cadastro';
 
 function App() {

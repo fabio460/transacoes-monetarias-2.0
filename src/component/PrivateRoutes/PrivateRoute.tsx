@@ -1,7 +1,7 @@
 import { CircularProgress } from '@mui/material'
 import  { useState,useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
-import { AccountRequest } from '../Api'
+import { AccountRequest } from '../../Api'
 
 export const  PrivateRoute = ({children}:{children:JSX.Element})=> {
     const [loading, setLoading] = useState(true)

@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { CashOut } from '../Api';
+import { CashOut } from '../../Api';
 import { useDispatch } from "react-redux/es/hooks/useDispatch"
 import { useSelector } from "react-redux/es/hooks/useSelector"
 import { CircleNotifications } from '@mui/icons-material';
