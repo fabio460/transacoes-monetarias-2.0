@@ -6,6 +6,7 @@ import { AccountType } from '../../../Type'
 import './AppBar.css'
 import AvatarMenuList from './AvatarMenuList'
 import { useSelector } from 'react-redux/es/exports'
+import logo from '../../../logo_ng.png'
 export default function AppBar() {
     const [User, setUser] = useState<{username:string,id:string}>()
     const [Account, setAccount] = useState<AccountType>()
@@ -32,9 +33,12 @@ export default function AppBar() {
   return (
     <nav className="navbar bg-light" style={{padding:"10px 20px"}}>
         <div className="container-fluid">
-            <h1 className="navbar-brand">Bem vindo {User?.username}</h1>
+            <h1 className="navbar-brand">
+              <img src={logo} className='imgUpBar' alt='sem imagem'/>
+              Bem vindo {User?.username}
+            </h1>
             <div className='appBarIMenuRight'>
-                <div>Saldo <span className='appBarMenuRightMoney'> {Account && parseFloat(Account?.balance).toFixed(2)}</span> reais</div>
+                <div>Saldo R$ <span className='appBarMenuRightMoney'> {Account && parseFloat(Account?.balance).toFixed(2)}</span></div>
                 <AvatarMenuList avatarName={User?.username} sair={sair}/>
             </div>
         </div>

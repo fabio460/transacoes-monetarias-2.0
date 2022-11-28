@@ -58,7 +58,7 @@ export default function PaymentBtnConfirm({NameSelected,ValueSelected,setValueSe
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-           Enviando o valor de {ValueSelected} reais para {NameSelected}
+           Enviando o valor de R$ {ValueSelected} para {NameSelected}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
