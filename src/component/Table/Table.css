@@ -5,7 +5,7 @@
 
 .tableBody{
    overflow-y: auto;
-   max-height: 500px;  
+   max-height: 460px;  
 }
 
 .tableBody::-webkit-scrollbar{
