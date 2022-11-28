@@ -19,7 +19,7 @@ export function handleDate (data:string){
     let dia = data.split('T')[0].split('-')[2]
     let mes = data.split('T')[0].split('-')[1]
     let ano = data.split('T')[0].split('-')[0]
-    return dia+'/'+'/'+mes+'/'+ano
+    return dia+'/'+mes+'/'+ano
 }
 
 export function handleMonth(text:string) {
