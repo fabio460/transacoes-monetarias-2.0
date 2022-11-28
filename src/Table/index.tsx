@@ -42,19 +42,19 @@ export default function Table() {
             <table className="table table-striped ">
               <thead>
                   <tr>
-                      <th scope="col">Transações</th>
-                      <th scope="col">Valor da transação</th>
-                      <th scope="col"> <span id='th-2'>Enviado por </span></th>
-                      <th  scope="col" ><span id='th-2'>Recebido por </span> </th>
-                      <th scope="col">data</th>
+                      <th scope="col" style={{width:'150px'}}>Transações</th>
+                      <th scope="col" style={{width:'150px'}}> <span id=''>Valor  </span></th>
+                      <th scope="col"style={{width:'150px'}}> <span id='th-2'>Enviado por </span></th>
+                      <th  scope="col" style={{width:'150px'}}><span id='th-2'>Recebido por </span> </th>
+                      <th scope="col"style={{width:'150px'}}>Data</th>
                   </tr>
               </thead>
               {
                 load ?
                    <tr className='emptyTable'>
                     <td ></td>
-                    <td >Vazio</td>
                     <td ></td>
+                    <td >Vazio</td>
                     <td></td>
                     <td></td>
                    </tr>

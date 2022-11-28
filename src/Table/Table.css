@@ -29,6 +29,10 @@
    text-align: end;
    font-size: 24px;
 }
+th,td{
+   text-align: center;
+}
+
 
 @media (max-width:600px) {
     .table{
@@ -39,7 +43,7 @@
        flex-direction: column;
        justify-content: center;
        box-sizing: border-box;
-       
+       width: 100%;
     }
     .tableBody{
       overflow-y:scroll;

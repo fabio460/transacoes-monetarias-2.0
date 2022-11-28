@@ -16,7 +16,7 @@ export const  PrivateRoute = ({children}:{children:JSX.Element})=> {
     }, [])
     return loading ?
       <div style={{display:'flex',justifyContent:"center",alignItems:"center",height:"90vh"}}>
-        <CircularProgress size='200px'/>
+        <CircularProgress size='150px'/>
       </div> :
       !authenticate ? 
       <div>
