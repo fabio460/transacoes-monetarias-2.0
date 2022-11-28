@@ -11,16 +11,20 @@ export default function Login() {
     const [password, setpassword] = useState('')
     const [loadding, setloadding] = useState(false)
     const [showPassword, setshowPassword] = useState(false) 
+    const [inputInvalided, setInputInvalided] = useState(false)
+    const [msgInvalidInput, setmsgInvalidInput] = useState('')
     const navigate = useNavigate()
 
     const logar =async ()=>{
        setloadding(true)
        const req = await LoginRequest(username,password)
+       setmsgInvalidInput(req)
        if (req) {
          setUserLocalStorage(req)
           navigate('/')
        }else{
-         alert('usuario ou senha inválidos')
+        setmsgInvalidInput('usuario ou senha inválidos')
+        setInputInvalided(true)
        }
        setloadding(false)
     }
@@ -45,12 +49,15 @@ export default function Login() {
               <FormControl variant="standard">
                 <InputLabel htmlFor="component-simple">Nome</InputLabel>
                 <Input id="component-simple" 
+                    error={inputInvalided}
                     onChange={e=>setusername(e.target.value)}value={username}
                 />
+                
               </FormControl>
               <FormControl variant="standard" sx={{margin:"20px 0px"}}>
                 <InputLabel htmlFor="component-simple">Senha</InputLabel>
                 <Input id="component-simple"  
+                  error={inputInvalided}
                   type={showPassword?'text':'password'}
                   onChange={e=>setpassword(e.target.value)}value={password}
                   endAdornment={
@@ -59,14 +66,16 @@ export default function Login() {
                         aria-label="toggle password visibility"
                         onClick={()=> setshowPassword(!showPassword)}
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword ?
+                          <VisibilityOff color={inputInvalided ? 'error' :'inherit'} />
+                          : 
+                          <Visibility color={inputInvalided ? 'error' :'inherit'} />}
                       </IconButton>
                     </InputAdornment>
                   }
                 />
-  
-               
               </FormControl>
+              <div className='msgErro'>{msgInvalidInput}</div>
               <Typography>
                 Não é cadastrado? <Link to={'/cadastro'}>Clique aqui  </Link>
               </Typography>

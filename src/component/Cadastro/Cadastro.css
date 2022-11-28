@@ -39,7 +39,9 @@
     font-size: 18px;
     max-width: 500px;
 }
-
+.msgErro{
+    color: red;
+}
 @media (max-width:600px) {
     .cadastroLeft{
       display: none;
