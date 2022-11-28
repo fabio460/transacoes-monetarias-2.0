@@ -25,7 +25,7 @@ export default function Cadastro() {
   return (
     <div className='cadastroContainer'>
       <div className='cadastroLeft'>
-         <h1 className='cadastroTitle'>Ola! Cadastre-se aqui</h1>
+         <h1 className='cadastroTitle'>Olá! Cadastre-se aqui</h1>
          <div className='cadastroText'>
                 <div className='cadastroTextItem'>
                   <div>Primeiro faça seu cadastro </div>

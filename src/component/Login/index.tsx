@@ -30,11 +30,11 @@ export default function Login() {
     <div>
         <div className='cadastroContainer'>
           <div className='cadastroLeft'>
-             <h1 className='cadastroTitle'>Ola! Seja bem vindo</h1>
+             <h1 className='cadastroTitle'>Olá! Seja bem vindo </h1>
              <div className='cadastroText'>
                 <div className='cadastroTextItem'>
-                  <div>Este é um sistema de tranferência monetária</div>
-                  <div>Voçe pode transferir, receber e consultar suas transaçes</div>
+                  <div>Este é um sistema de transferência monetária </div>
+                  <div>Você pode transferir, receber e consultar suas transações</div>
                   <div>Faça o login e aproveite</div>
                 </div>
              </div>
