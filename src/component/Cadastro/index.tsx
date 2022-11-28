@@ -21,7 +21,7 @@ export default function Cadastro() {
      const usecreated = await CreateUser(username,password)
      setloadding(false)
      if(usecreated === `Usuário ${username} cadastrado com sucesso!`){
-        alert(usecreated === `Usuário ${username} cadastrado com sucesso!`)
+        alert(`Usuário ${username} cadastrado com sucesso!`)
         navigate('/login')
      }else{
       setmsgInvalidInput(usecreated)
